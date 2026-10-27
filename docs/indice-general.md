@@ -36,6 +36,9 @@ Este documento reúne toda la documentación del proyecto **ChuspaPulse**, organ
 # Seguridad
 
 - [Seguridad](seguridad.md) — Recomendaciones de seguridad.
+- [Checklist de hardening](seguridad-checklist.md) — Verificación previa a exponer Pulso.
+- [HTTPS/TLS](seguridad-tls.md) — Certificados y configuración de HTTPS.
+- [API key](seguridad-api-key.md) — Autenticación de los endpoints.
 - [Dependencias externas](dependencias-externas.md) — Bibliotecas utilizadas.
 
 ---
@@ -46,7 +49,6 @@ Este documento reúne toda la documentación del proyecto **ChuspaPulse**, organ
 - [Tipos de datos](tipos-datos.md) — Estructuras utilizadas.
 - [Formatters](formatters.md) — Formatos de salida.
 - [Collectors](collectors.md) — Recolección de métricas.
-- [Colectores](colectores.md) — Documentación adicional.
 
 ---
 
@@ -58,6 +60,8 @@ Este documento reúne toda la documentación del proyecto **ChuspaPulse**, organ
 - [Alertas](alertas.md) — Sistema de alertas.
 - [Casos de uso](casos-de-uso.md) — Casos de uso principales.
 - [Pruebas unitarias](pruebas-unitarias.md) — Ejecución de pruebas.
+- [Modelo de datos](modelo-de-datos.md) — Esquema SQLite de la base de datos.
+- [Downsampling](downsampling.md) — Compactación de datos antiguos.
 
 ---
 

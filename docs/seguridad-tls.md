@@ -1,5 +1,7 @@
 # Configuración HTTPS/TLS
 
+> **Estado de implementación:** Esta guía describe la configuración **prevista**. En el código actual (`src/`) no se leen las claves `tls_cert_path` ni `tls_key_path`, por lo que el servidor HTTP de Pulso no sirve HTTPS por sí mismo. Mientras tanto, puede publicarse detrás de un proxy inverso que gestione TLS (ver la sección 3). Consulta [seguridad.md](seguridad.md#7-seguridad-del-servidor-http).
+
 Este documento describe cómo generar un certificado autofirmado para pruebas locales, un ejemplo de configuración de HTTPS/TLS en `ChuspaPulse.toml` y recomendaciones para el uso de certificados en entornos de producción.
 
 ---
@@ -29,9 +31,9 @@ Este comando genera los siguientes archivos:
 
 ---
 
-## 2. Configurar HTTPS/TLS en `ChuspaPulse.toml`
+## 2. Configurar HTTPS/TLS en `pulso.toml`
 
-Una vez disponibles el certificado y la clave privada, configure las rutas correspondientes en el archivo `ChuspaPulse.toml`.
+Una vez disponibles el certificado y la clave privada, configure las rutas correspondientes en el archivo `pulso.toml`.
 
 Ejemplo de configuración:
 
@@ -67,3 +69,10 @@ Evite utilizar certificados autofirmados en entornos de producción, ya que los 
 * Utilice versiones de TLS 1.2 o superiores.
 * Renueve los certificados antes de su fecha de expiración.
 * Verifique que las rutas configuradas para el certificado y la clave privada sean correctas antes de iniciar el servicio.
+
+---
+
+## Ver también
+
+- [Seguridad en Pulso](seguridad.md)
+- [Checklist de hardening](seguridad-checklist.md)
