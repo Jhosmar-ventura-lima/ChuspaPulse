@@ -4,7 +4,7 @@
 
 #include <windows.h>
 
-namespace pulso::platform::windows {
+namespace ChuspaPulse::platform::windows {
 
 UptimeInfo getUptimeWindows() {
     ULONGLONG milliseconds = GetTickCount64();
