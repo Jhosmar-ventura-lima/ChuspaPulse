@@ -84,6 +84,7 @@ Limitaciones:
 Referencias:
 
 - `docs/collectors.md`
+- `docs/colectores.md`
 
 ---
 

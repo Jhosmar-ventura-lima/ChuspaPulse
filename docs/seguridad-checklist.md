@@ -1,10 +1,8 @@
 # Checklist de Hardening de Seguridad
 
 > Este documento es una lista de verificación rápida para asegurar ChuspaPulse antes de
-> fuera de localhost. Para las consideraciones generales de seguridad, consulta
-> [seguridad.md](seguridad.md).
-
-> **Nota:** Los ítems de TLS, API key, rate limiting y CORS describen controles cuya configuración está prevista pero **aún no está implementada** en el código actual. Mientras tanto, la protección debe hacerse con un cortafuegos o un proxy inverso (ver [seguridad.md](seguridad.md#7-seguridad-del-servidor-http)).
+> exponerlo fuera de localhost. Para la política de seguridad completa, consulta
+> [docs/seguridad.md](seguridad.md).
 
 ---
 
@@ -23,7 +21,7 @@ Cada ítem enlaza al documento detallado con instrucciones de configuración.
 - [ ] El certificado es válido y no está vencido.
 - [ ] Se usa TLS 1.2 o superior.
 
-> Ver configuración detallada: [seguridad-tls.md](seguridad-tls.md)
+> Ver configuración detallada: [docs/seguridad-tls.md](seguridad-tls.md)
 
 ---
 
@@ -33,7 +31,7 @@ Cada ítem enlaza al documento detallado con instrucciones de configuración.
 - [ ] La API key no está hardcodeada en el código fuente.
 - [ ] La API key tiene al menos 32 caracteres aleatorios.
 
-> Ver configuración detallada: [seguridad-api-key.md](seguridad-api-key.md)
+> Ver configuración detallada: [docs/seguridad-api-key.md](seguridad-api-key.md)
 
 ---
 
@@ -43,7 +41,7 @@ Cada ítem enlaza al documento detallado con instrucciones de configuración.
 - [ ] Se define un límite razonable de peticiones por minuto por cliente.
 - [ ] Se retorna HTTP 429 cuando se supera el límite.
 
-> Ver contexto: [seguridad.md](seguridad.md#7-seguridad-del-servidor-http)
+> Ver configuración detallada: [docs/seguridad.md](seguridad.md#7-seguridad-del-servidor-http)
 
 ---
 
@@ -53,7 +51,7 @@ Cada ítem enlaza al documento detallado con instrucciones de configuración.
 - [ ] No se permiten orígenes comodín en producción.
 - [ ] Solo se permiten los métodos HTTP necesarios.
 
-> Ver configuración detallada: [cors.md](cors.md)
+> Ver configuración detallada: [docs/seguridad-api-key.md](seguridad-api-key.md)
 
 ---
 
@@ -64,7 +62,7 @@ Cada ítem enlaza al documento detallado con instrucciones de configuración.
 - [ ] Se usan los permisos mínimos necesarios para cada collector.
 - [ ] Los permisos requeridos están documentados.
 
-> Ver configuración detallada: [seguridad.md](seguridad.md#2-permisos-de-ejecución)
+> Ver configuración detallada: [docs/seguridad.md](seguridad.md#2-permisos-de-ejecución)
 
 ---
 
@@ -80,7 +78,7 @@ host = "127.0.0.1"
 puerto = 8080
 ```
 
-> Ver contexto: [seguridad.md](seguridad.md#7-seguridad-del-servidor-http)
+> Ver configuración detallada: [docs/seguridad.md](seguridad.md#7-seguridad-del-servidor-http)
 
 ---
 
@@ -91,12 +89,11 @@ puerto = 8080
 - [ ] El nivel de log en producción es `info` o superior (no `debug`).
 
 ```toml
+[storage]
 nivel_log = "info"
 ```
 
-> `nivel_log` es una clave de la raíz de `pulso.toml`, no pertenece a ninguna sección.
->
-> Ver contexto: [seguridad.md](seguridad.md#4-manejo-de-errores)
+> Ver configuración detallada: [docs/seguridad.md](seguridad.md#4-manejo-de-errores)
 
 ---
 

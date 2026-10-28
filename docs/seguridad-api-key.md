@@ -1,14 +1,12 @@
 # Seguridad mediante API key
 
-> **Estado de implementación:** Esta guía describe la configuración **prevista**. En el código actual (`src/`) no se lee la clave `api_key` ni se valida el encabezado `Authorization`, por lo que hoy los endpoints HTTP no requieren autenticación. Consulta [seguridad.md](seguridad.md#7-seguridad-del-servidor-http) para las medidas de mitigación vigentes.
-
 ## Introducción
 
 ChuspaPulse permite habilitar una autenticación opcional mediante una API key para proteger los endpoints HTTP. Cuando esta opción está configurada, los clientes deben autenticarse enviando la clave correspondiente en cada solicitud.
 
 ## Configuración
 
-Configure la API key en el archivo `pulso.toml`:
+Configure la API key en el archivo `ChuspaPulse.toml`:
 
 ```toml
 [servidor]
@@ -25,7 +23,7 @@ Los clientes deben enviar el siguiente encabezado HTTP en cada solicitud protegi
 Authorization: Bearer <api_key>
 ```
 
-Donde `<api_key>` corresponde al valor configurado en `pulso.toml`.
+Donde `<api_key>` corresponde al valor configurado en `ChuspaPulse.toml`.
 
 ## Endpoints exceptuados
 
@@ -40,8 +38,3 @@ Esto permite realizar verificaciones del estado del servicio incluso cuando la a
 ```bash
 curl -H "Authorization: Bearer mi_api_key_segura" http://localhost:8080/metrics
 ```
-
-## Ver también
-
-- [Seguridad en Pulso](seguridad.md)
-- [Checklist de hardening](seguridad-checklist.md)

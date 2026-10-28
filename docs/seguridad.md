@@ -1,6 +1,6 @@
-# Seguridad en Pulso
+# Seguridad en ChuspaPulse
 
-Pulso es un monitor de infraestructura ligero que accede a información sensible del sistema (por ejemplo, desde `/proc`) y expone un servidor HTTP para consultas. Por ello, es fundamental mantener un enfoque de mínimo privilegio y seguridad por diseño.
+ChuspaPulse es un monitor de infraestructura ligero que accede a información sensible del sistema (por ejemplo, desde `/proc`) y expone un servidor HTTP para consultas. Por ello, es fundamental mantener un enfoque de mínimo privilegio y seguridad por diseño.
 
 Esta página es el punto de entrada de la documentación de seguridad: resume las consideraciones generales y enlaza a las guías específicas.
 
@@ -10,7 +10,7 @@ Esta página es el punto de entrada de la documentación de seguridad: resume la
 
 | Documento | Para qué sirve | Estado en el código actual |
 |---|---|---|
-| [Checklist de hardening](seguridad-checklist.md) | Lista de verificación rápida antes de exponer Pulso fuera de `localhost` | Guía de revisión |
+| [Checklist de hardening](seguridad-checklist.md) | Lista de verificación rápida antes de exponer ChuspaPulse fuera de `localhost` | Guía de revisión |
 | [HTTPS/TLS](seguridad-tls.md) | Certificados y configuración de HTTPS | Configuración prevista; no implementada |
 | [API key](seguridad-api-key.md) | Autenticación opcional de los endpoints HTTP | Configuración prevista; no implementada |
 | [CORS](cors.md) | Orígenes permitidos para clientes web | Configuración prevista; no implementada |
@@ -21,7 +21,7 @@ Esta página es el punto de entrada de la documentación de seguridad: resume la
 
 ## 1. Acceso a datos del sistema
 
-- **Riesgo:** Pulso accede a información sensible como uso de CPU, memoria, procesos y red. Un mal manejo podría exponer datos internos del sistema o del usuario. También existe riesgo de lecturas indebidas mediante rutas relativas si no se restringen correctamente.
+- **Riesgo:** ChuspaPulse accede a información sensible como uso de CPU, memoria, procesos y red. Un mal manejo podría exponer datos internos del sistema o del usuario. También existe riesgo de lecturas indebidas mediante rutas relativas si no se restringen correctamente.
 - **Mitigación:**
   - Limitar la recolección de datos únicamente a lo necesario.
   - Evitar almacenar información sensible innecesaria.
@@ -31,7 +31,7 @@ Esta página es el punto de entrada de la documentación de seguridad: resume la
 
 ## 2. Permisos de ejecución
 
-- **Riesgo:** Ejecutar Pulso con privilegios elevados (root/administrador) aumenta el impacto de cualquier fallo o vulnerabilidad.
+- **Riesgo:** Ejecutar ChuspaPulse con privilegios elevados (root/administrador) aumenta el impacto de cualquier fallo o vulnerabilidad.
 - **Mitigación:**
   - **No ejecutar como `root`.** Se recomienda utilizar un usuario dedicado sin shell interactivo.
   - Diseñar el sistema para funcionar con privilegios mínimos y solicitar permisos elevados solo cuando sea estrictamente necesario.
@@ -118,4 +118,4 @@ Actualmente el agente **no implementa autenticación HTTP** en sus endpoints (`/
 
 - La seguridad es un proceso continuo y debe revisarse constantemente.
 - Estas consideraciones pueden ampliarse a medida que el proyecto evolucione.
-- Pulso prioriza un enfoque seguro sin comprometer su ligereza y rendimiento.
+- ChuspaPulse prioriza un enfoque seguro sin comprometer su ligereza y rendimiento.
