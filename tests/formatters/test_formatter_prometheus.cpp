@@ -11,10 +11,10 @@
 
 namespace {
 
-pulso::core::Snapshot crearSnapshot(
+ChuspaPulse::core::Snapshot crearSnapshot(
     std::int64_t timestamp,
-    const std::vector<pulso::core::Metrica>& metricas) {
-    pulso::core::Snapshot snapshot;
+    const std::vector<ChuspaPulse::core::Metrica>& metricas) {
+    ChuspaPulse::core::Snapshot snapshot;
     snapshot.timestamp = timestamp;
     snapshot.metricas = metricas;
     return snapshot;
@@ -35,14 +35,14 @@ std::vector<std::string> obtenerLineas(const std::string& output) {
 } // namespace
 
 TEST(TestFormatterPrometheus, Test_FormatoYContentType) {
-    pulso::formatters::FormatterPrometheus formatter;
+    ChuspaPulse::formatters::FormatterPrometheus formatter;
 
     EXPECT_EQ(formatter.formato(), "prometheus");
     EXPECT_EQ(formatter.contentType(), "text/plain; version=0.0.4");
 }
 
 TEST(TestFormatterPrometheus, Test_TransformacionDeNombres) {
-    pulso::formatters::FormatterPrometheus formatter;
+    ChuspaPulse::formatters::FormatterPrometheus formatter;
 
     const auto snapshot = crearSnapshot(
         1000,
@@ -50,11 +50,11 @@ TEST(TestFormatterPrometheus, Test_TransformacionDeNombres) {
 
     const std::string output = formatter.formatear(snapshot);
 
-    EXPECT_NE(output.find("pulso_cpu_usage"), std::string::npos);
+    EXPECT_NE(output.find("ChuspaPulse_cpu_usage"), std::string::npos);
 }
 
 TEST(TestFormatterPrometheus, Test_EstructuraDeLineas) {
-    pulso::formatters::FormatterPrometheus formatter;
+    ChuspaPulse::formatters::FormatterPrometheus formatter;
 
     const auto snapshot = crearSnapshot(
         1000,
@@ -66,11 +66,11 @@ TEST(TestFormatterPrometheus, Test_EstructuraDeLineas) {
     ASSERT_EQ(lineas.size(), 3U);
     EXPECT_EQ(lineas[0].find("# HELP "), 0U);
     EXPECT_EQ(lineas[1].find("# TYPE "), 0U);
-    EXPECT_EQ(lineas[2].find("pulso_cpu_usage "), 0U);
+    EXPECT_EQ(lineas[2].find("ChuspaPulse_cpu_usage "), 0U);
 }
 
 TEST(TestFormatterPrometheus, Test_TipoSiempreGauge) {
-    pulso::formatters::FormatterPrometheus formatter;
+    ChuspaPulse::formatters::FormatterPrometheus formatter;
 
     const auto snapshot = crearSnapshot(
         1000,
@@ -95,7 +95,7 @@ TEST(TestFormatterPrometheus, Test_TipoSiempreGauge) {
 }
 
 TEST(TestFormatterPrometheus, Test_SnapshotVacio) {
-    pulso::formatters::FormatterPrometheus formatter;
+    ChuspaPulse::formatters::FormatterPrometheus formatter;
 
     const auto snapshot = crearSnapshot(1000, {});
 
@@ -110,13 +110,13 @@ TEST(TestFormatterPrometheus, Test_SnapshotVacio) {
 }
 
 TEST(TestFormatterPrometheus, Test_HistorialVacioDevuelveStringVacio) {
-    pulso::formatters::FormatterPrometheus formatter;
+    ChuspaPulse::formatters::FormatterPrometheus formatter;
 
     EXPECT_EQ(formatter.formatearHistorial({}), "");
 }
 
 TEST(TestFormatterPrometheus, Test_HistorialConSnapshots_DevuelveSoloElUltimo) {
-    pulso::formatters::FormatterPrometheus formatter;
+    ChuspaPulse::formatters::FormatterPrometheus formatter;
 
     const auto s1 = crearSnapshot(
         100,
